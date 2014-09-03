@@ -18,6 +18,7 @@
         "C:/Users/user.ENDEMOLUK/workspace/XMLDefGenerator/grunt/node_modules/grunt/node_modules/glob/test/root-nomount.js",
         "C:/Users/user.ENDEMOLUK/workspace/XMLDefGenerator/grunt/node_modules/grunt/node_modules/glob/test/root.js",
         "C:/Users/user.ENDEMOLUK/workspace/XMLDefGenerator/grunt/node_modules/grunt/node_modules/glob/test/zz-cleanup.js",
-        "C:/Users/user.ENDEMOLUK/workspace/XMLDefGenerator/grunt/node_modules/grunt/node_modules/glob/glob.js"
+        "C:/Users/user.ENDEMOLUK/workspace/XMLDefGenerator/grunt/node_modules/grunt/node_modules/glob/glob.js",
+        "C:/Users/user.ENDEMOLUK/workspace/TsXmlDefGen/grunt/node_modules/grunt/node_modules/glob/node_modules/graceful-fs/test/ulimit.js"
     ]
 }
