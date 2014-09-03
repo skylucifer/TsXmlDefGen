@@ -1,0 +1,15 @@
+{
+    "name": "XMLDefG",
+    "version": "0.1.0",
+    "devDependencies": {},
+    "description": "test",
+    "main": "Gruntfile.js",
+    "directories": {},
+    "dependencies": {
+        "grunt": "~0.4.2",
+        "grunt-typescript": ""
+    },
+    "scripts": {},
+    "author": "Me",
+    "license": "BSD"
+}
