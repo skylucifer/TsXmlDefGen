@@ -13,14 +13,34 @@ class Main {
         
         var path = "xml/responses/";
         
-        new TextLoader(path + "init_response.xml", (xml:string)=> {
-            new Reader(xml, lookup);
-            new TextLoader(path + "spin_wild_response.xml", (xml:string)=> {
+        var files:string[] = [
+            "cash_prize_bonus_reponse.xml",    
+            "close_response.xml",    
+            "init_response.xml",    
+            "spin_response.xml",    
+            "spin_wild_response.xml",    
+            "win_spin_close_response.xml",    
+            "win_spin_leave_response.xml",    
+            "win_spin_response.xml",    
+            "win_spin_take_response.xml"
+        ];
+        
+        
+        var loadNext = ()=> {
+            var nextFile:string = path + files.shift();
+            console.log("loading " + nextFile);
+            new TextLoader(nextFile, (xml:string)=> {
                 new Reader(xml, lookup);
                 
-                new Writer(lookup);
+                if (files.length > 0)
+                {
+                    loadNext();
+                } else {
+                    new Writer(lookup);
+                }
             });
-        });
+        }
+        loadNext();
     }
     
 }

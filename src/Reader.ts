@@ -31,9 +31,7 @@ class Reader {
                 isArray:false
             };
             this.lookup[name] = el;
-        } /*else {
-            el.isArray = true;    
-        }*/
+        } 
         
             
         
@@ -50,11 +48,11 @@ class Reader {
                 continue;
             } else if (prop.charAt(0) == "_" || typeof value == "string" || (Constants.COUNT_PROP in value && value[Constants.COUNT_PROP] == 0))
             {
-                el.attributes.push(prop);    
+                if (el.attributes.indexOf(prop)==-1) el.attributes.push(prop);    
             } else if (prop.indexOf(Constants.ARRAY_SUFFIX)==-1){
                 
                 this.analyseChild(value, prop)
-                el.children.push(prop);
+                if (el.children.indexOf(prop)==-1) el.children.push(prop);
 
                 var arrayData:any[] = data[prop + Constants.ARRAY_SUFFIX];
                 if (arrayData && arrayData.length > 1)

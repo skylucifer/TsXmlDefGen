@@ -39,10 +39,12 @@ var Reader = (function () {
             } else if (prop != "0" && prop.replace(/[0-9]/g, "") == "" || prop == Constants.COUNT_PROP) {
                 continue;
             } else if (prop.charAt(0) == "_" || typeof value == "string" || (Constants.COUNT_PROP in value && value[Constants.COUNT_PROP] == 0)) {
-                el.attributes.push(prop);
+                if (el.attributes.indexOf(prop) == -1)
+                    el.attributes.push(prop);
             } else if (prop.indexOf(Constants.ARRAY_SUFFIX) == -1) {
                 this.analyseChild(value, prop);
-                el.children.push(prop);
+                if (el.children.indexOf(prop) == -1)
+                    el.children.push(prop);
 
                 var arrayData = data[prop + Constants.ARRAY_SUFFIX];
                 if (arrayData && arrayData.length > 1) {
@@ -124,14 +126,32 @@ var Main = (function () {
 
         var path = "xml/responses/";
 
-        new TextLoader(path + "init_response.xml", function (xml) {
-            new Reader(xml, lookup);
-            new TextLoader(path + "spin_wild_response.xml", function (xml) {
+        var files = [
+            "cash_prize_bonus_reponse.xml",
+            "close_response.xml",
+            "init_response.xml",
+            "spin_response.xml",
+            "spin_wild_response.xml",
+            "win_spin_close_response.xml",
+            "win_spin_leave_response.xml",
+            "win_spin_response.xml",
+            "win_spin_take_response.xml"
+        ];
+
+        var loadNext = function () {
+            var nextFile = path + files.shift();
+            console.log("loading " + nextFile);
+            new TextLoader(nextFile, function (xml) {
                 new Reader(xml, lookup);
 
-                new Writer(lookup);
+                if (files.length > 0) {
+                    loadNext();
+                } else {
+                    new Writer(lookup);
+                }
             });
-        });
+        };
+        loadNext();
     };
     return Main;
 })();
