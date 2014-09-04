@@ -57,8 +57,11 @@ var Reader = (function () {
     return Reader;
 })();
 var Writer = (function () {
-    function Writer(lookup) {
+    function Writer(lookup, suffix) {
+        if (typeof suffix === "undefined") { suffix = "El"; }
         var _this = this;
+        this.suffix = suffix;
+
         var output = [];
         for (name in lookup) {
             if (name == Constants.ROOT_NAME)
@@ -96,7 +99,7 @@ var Writer = (function () {
     };
 
     Writer.prototype.makeInterfaceName = function (s) {
-        return "I" + s + "El";
+        return "I" + s + this.suffix;
     };
     return Writer;
 })();
@@ -147,7 +150,7 @@ var Main = (function () {
                 if (files.length > 0) {
                     loadNext();
                 } else {
-                    new Writer(lookup);
+                    new Writer(lookup, "_RespEl");
                 }
             });
         };

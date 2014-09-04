@@ -1,6 +1,10 @@
 class Writer {
     
-    constructor(lookup:{[name:string]:IElement}) {
+    private suffix:string;
+    
+    constructor(lookup:{[name:string]:IElement}, suffix:string = "El") {
+        
+        this.suffix = suffix;
         
         var output:string[] = [];
         for (name in lookup)
@@ -42,7 +46,7 @@ class Writer {
     }
     
     private makeInterfaceName(s:string):string {
-        return "I" + s + "El";
+        return "I" + s + this.suffix;
     }
     
     
