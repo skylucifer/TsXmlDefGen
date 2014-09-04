@@ -10,13 +10,8 @@ var Constants = (function () {
 var Reader = (function () {
     function Reader(xml, lookup) {
         this.lookup = lookup;
-
         var data = x2js.xml_str2json(xml, true);
-        console.log(data);
-
         this.analyseChild(data, Constants.ROOT_NAME);
-
-        console.log(this.lookup);
     }
     Reader.prototype.analyseChild = function (data, name) {
         var el = this.lookup[name];

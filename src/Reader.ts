@@ -9,13 +9,8 @@ class Reader {
     constructor(xml:string, lookup:{[name:string]:IElement}) {
         
         this.lookup = lookup;
-        
         var data:any = x2js.xml_str2json(xml, true);
-        console.log(data);
-        
         this.analyseChild(data, Constants.ROOT_NAME);
-        
-        console.log(this.lookup);
     }
     
     private analyseChild(data:any, name:string):IElement {
@@ -32,8 +27,6 @@ class Reader {
             };
             this.lookup[name] = el;
         } 
-        
-            
         
         for (var prop in data)
         {
