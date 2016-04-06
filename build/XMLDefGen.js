@@ -28,6 +28,7 @@ var Reader = (function () {
 
         for (var prop in data) {
             var value = data[prop];
+            if (typeof value !== "object") continue;
 
             if (prop == "0") {
                 this.analyseChild(value, name);
@@ -122,18 +123,10 @@ var Main = (function () {
     Main.start = function () {
         var lookup = {};
 
-        var path = "xml/responses/";
+        var path = "./";
 
         var files = [
-            "cash_prize_bonus_reponse.xml",
-            "close_response.xml",
-            "init_response.xml",
-            "spin_response.xml",
-            "spin_wild_response.xml",
-            "win_spin_close_response.xml",
-            "win_spin_leave_response.xml",
-            "win_spin_response.xml",
-            "win_spin_take_response.xml"
+            "sample.xml"
         ];
 
         var loadNext = function () {

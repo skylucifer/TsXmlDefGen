@@ -32,6 +32,7 @@ class Reader {
         {
             
             var value:any = data[prop];
+            if (typeof value !== "object") continue;
             
             if (prop == "0")
             {

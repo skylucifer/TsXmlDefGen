@@ -11,18 +11,10 @@ class Main {
         
         var lookup:{[name:string]:IElement} = {};
         
-        var path = "xml/responses/";
+        var path = "./";
         
         var files:string[] = [
-            "cash_prize_bonus_reponse.xml",    
-            "close_response.xml",    
-            "init_response.xml",    
-            "spin_response.xml",    
-            "spin_wild_response.xml",    
-            "win_spin_close_response.xml",    
-            "win_spin_leave_response.xml",    
-            "win_spin_response.xml",    
-            "win_spin_take_response.xml"
+            "sample.xml"
         ];
         
         
